@@ -18,16 +18,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 50rpx;
-  margin-left: 10rpx;
-  color: #39b54a;
   text-align: center;
-  font-size: 25rpx;
+}
+.mycollapse{
   font-family: SumHei;
-  padding: 0 20rpx;
   border-radius: 5rpx;
-  border: 1px solid #39b54a;
   line-height: 2.55555556;
+  margin-left: 10rpx;
+  min-width: 50rpx;
+  font-size: 25rpx;
+  padding: 0 20rpx;
+  border: 1px solid #39b54a;
+  color: #39b54a;
 }
 .control{
   display: inline-block;

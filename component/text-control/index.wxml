@@ -12,7 +12,7 @@
     <view wx:if="{{!controlKeep && showControl}}" class="collapse collapse-class" hover-class="hover hover-class"
       hover-stay-time="{{hoverStayTime}}" bindtap="onCollapseTap">
       <slot wx:if="{{collapseSlot}}" name="collapse"/>
-      <view wx:else>{{collapseLabel}}</view>
+      <view wx:else class="mycollapse">{{collapseLabel}}</view>
     </view>
     <slot name="right" />
   </view>

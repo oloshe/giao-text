@@ -16,7 +16,7 @@
 </text-control>
 
 <view class='title'>清除按钮</view>
-<text-control id="custom" stringSet="\\+?*" columns="4" show-clear="{{true}}" placeholder="请输入内容"/>
+<text-control id="custom" stringSet="\\+?*" columns="4" clearable placeholder="请输入内容"/>
 
 <view class='title'>密码框</view>
 <text-control stringSet="1234567890" columns="5" password="{{true}}" random="{{true}}" placeholder="请输入内容" />

@@ -15,7 +15,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.9.0",
 	"appid": "touristappid",
-	"projectname": "text-control",
+	"projectname": "giao-text",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
