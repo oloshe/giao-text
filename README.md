@@ -54,6 +54,7 @@ npm install giao-text
 |separator|分隔符，用于分割stringSet|String|''||
 |columns|列数，每行的最大按钮个数|Number|6||
 |distinct|是否去重|Boolean|false||
+|combo|当前字符长度为2时，是否将光标移至中间,如"()" "[]"|Boolean|false|
 |clearable|是否显示清除按钮|Boolean|false||
 |type|可设置为任意原生类型, 如 number idcard textarea digit|String|'text'|
 |password|是否是密码类型|Boolean|false|

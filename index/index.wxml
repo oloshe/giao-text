@@ -19,7 +19,7 @@
 <text-control id="custom" stringSet="\\+?*" columns="4" clearable placeholder="请输入内容"/>
 
 <view class='title'>密码框</view>
-<text-control stringSet="1234567890" columns="5" password="{{true}}" random="{{true}}" placeholder="请输入内容" />
+<text-control stringSet="1234567890" columns="5" password random placeholder="请输入内容" />
 
 <view class='title'>自定义按钮样式</view>
 <text-control stringSet="1234567890" columns="5" btn-class="custom-btn" hover-class="custom-hover" collapse-class="collapse" collapseSlot placeholder="请输入内容">
@@ -27,7 +27,10 @@
 </text-control>
 
 <view class='title'>滑动按钮</view>
-<text-control id="custom" stringSet="1234567890" columns="5" scroll="{{true}}" placeholder="请输入内容"/>
+<text-control id="custom" stringSet="1234567890" columns="5" scroll placeholder="请输入内容"/>
+
+<view class='title'>Combo按钮</view>
+<text-control id="custom" stringSet="(),[],{},<>,\"\"" separator="," columns="5" combo placeholder="请输入内容"/>
 
 <view class='title'>按钮常在</view>
 <text-control id="custom" stringSet="\\+?*" columns="4" control-keep="{{true}}" placeholder="请输入内容"/>
