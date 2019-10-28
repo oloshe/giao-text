@@ -71,7 +71,8 @@ npm install giao-text
 
 > 输入框部分参考 [微信官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/input.html)
 
-##Events
+## Events
+
 |事件|说明|返回参数|
 |-|-|-|
 |bind:change|内容改变事件|value = event.detail|
