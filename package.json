@@ -1,0 +1,18 @@
+{
+  "name": "text-control",
+  "version": "1.0.0",
+  "description": "小程序文本输入组件,高度自定义，可拓展性。",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "miniprogram-simulate": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jacob",
+  "license": "ISC"
+}

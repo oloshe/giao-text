@@ -1,0 +1,28 @@
+<view class='text-ctrl root-class'>
+  <view class="field">
+    <slot name="left" />
+    <input class="input" value="{{value}}" type="{{type}}" password="{{password}}" placeholder="{{placeholder}}"
+      placeholder-style="{{placeholderStyle}}" placeholder-class="{{placeholderClass}}" disabled="{{disabled}}"
+      maxlength="{{maxLength}}" cursor-spacing="{{cursorSpacing}}" focus="{{focus}}" confirm-type="{{confirmType}}"
+      confirm-hold="{{confirmHold}}" cursor="{{cursor}}" selection-start="{{selectionStart}}"
+      selection-end="{{selectionEnd}}" adjust-position="{{adjustPosition}}" hold-keyboard="{{holdKeyboard}}"
+      bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" bindconfirm="onConfirm"
+      bindkeyboardheightchange="onKeyboardheightchange" />
+    <icon wx:if="{{showClear && showControl}}" class="clear" type="clear" bindtap="clear" size="18" />
+    <view wx:if="{{!controlKeep && showControl}}" class="collapse collapse-class" hover-class="hover hover-class"
+      hover-stay-time="{{hoverStayTime}}" bindtap="onCollapseTap">
+      <slot wx:if="{{collapseSlot}}" name="collapse"/>
+      <view wx:else>{{collapseLabel}}</view>
+    </view>
+    <slot name="right" />
+  </view>
+
+  <scroll-view wx:if="{{controlKeep || showControl}}" class="control {{scroll ? 'scroll' : ''}}" scroll-x="{{scroll}}" enable-flex>
+    <block wx:for="{{stringArray}}" wx:key="item">
+      <view class="li btn-class {{scroll ? 'scroll' : ''}}" hover-class="hover hover-class" hover-stay-time="{{hoverStayTime}}"
+        style="width: {{100 / columns - 2}}%;margin:1%;" data-index="{{index}}" catchtap="onTap">
+        {{item}}
+      </view>
+    </block>
+  </scroll-view>
+</view>

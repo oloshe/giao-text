@@ -1,0 +1,33 @@
+<view class='title'>基础用法</view>
+<text-control stringSet="1234567890." placeholder="请输入内容" bind:focus="onFocus"/>
+
+<view class='title'>自定义字符集</view>
+<text-control stringSet="112,233,dds,566,#^@,dsd,<>?>,【】,55" separator="," placeholder="请输入内容" bind:input="onInput"
+  bind:blur="onBlur" />
+
+<view class='title'>自定义Slot</view>
+<text-control id="custom" stringSet="123456789" columns="3" placeholder="请输入内容" bind:input="onInput" bind:blur="onBlur">
+  <view slot="right" class="btn" hover-class="hover" hover-stay-time="100" bindtap="onConfirm">
+    确定
+  </view>
+</text-control>
+<text-control id="custom" stringSet="123456789" columns="3" placeholder="请输入内容" bind:input="onInput" bind:blur="onBlur">
+  <icon slot="left" class="icon" type="search" size="25" />
+</text-control>
+
+<view class='title'>清除按钮</view>
+<text-control id="custom" stringSet="\\+?*" columns="4" show-clear="{{true}}" placeholder="请输入内容"/>
+
+<view class='title'>密码框</view>
+<text-control stringSet="1234567890" columns="5" password="{{true}}" random="{{true}}" placeholder="请输入内容" />
+
+<view class='title'>自定义按钮样式</view>
+<text-control stringSet="1234567890" columns="5" btn-class="custom-btn" hover-class="custom-hover" collapse-class="collapse" collapseSlot placeholder="请输入内容">
+    <icon slot="collapse" type="download" size="25" />
+</text-control>
+
+<view class='title'>滑动按钮</view>
+<text-control id="custom" stringSet="1234567890" columns="5" scroll="{{true}}" placeholder="请输入内容"/>
+
+<view class='title'>按钮常在</view>
+<text-control id="custom" stringSet="\\+?*" columns="4" control-keep="{{true}}" placeholder="请输入内容"/>

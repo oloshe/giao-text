@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.mina": "vue",
+    "*.wpy": "vue",
+    "*.wxml": "html"
+  }
+}
