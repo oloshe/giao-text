@@ -3,12 +3,12 @@
     <slot name="left" />
     <input class="input" value="{{value}}" type="{{type}}" password="{{password}}" placeholder="{{placeholder}}"
       placeholder-style="{{placeholderStyle}}" placeholder-class="{{placeholderClass}}" disabled="{{disabled}}"
-      maxlength="{{maxLength}}" cursor-spacing="{{cursorSpacing}}" focus="{{focus}}" confirm-type="{{confirmType}}"
+      maxlength="{{maxlength}}" cursor-spacing="{{cursorSpacing}}" focus="{{focus}}" confirm-type="{{confirmType}}"
       confirm-hold="{{confirmHold}}" cursor="{{cursor}}" selection-start="{{selectionStart}}"
       selection-end="{{selectionEnd}}" adjust-position="{{adjustPosition}}" hold-keyboard="{{holdKeyboard}}"
       bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" bindconfirm="onConfirm"
       bindkeyboardheightchange="onKeyboardheightchange" />
-    <icon wx:if="{{showClear && showControl}}" class="clear" type="clear" bindtap="clear" size="18" />
+    <icon wx:if="{{ showClear }}" class="clear" type="clear" bindtap="clear" size="18" />
     <view wx:if="{{!controlKeep && showControl}}" class="collapse collapse-class" hover-class="hover hover-class"
       hover-stay-time="{{hoverStayTime}}" bindtap="onCollapseTap">
       <slot wx:if="{{collapseSlot}}" name="collapse"/>

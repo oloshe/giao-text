@@ -16,9 +16,13 @@ Component({
       type: Boolean,
       value: false
     },
-    showClear:{
+    clearable:{
       type: Boolean,
       value: false
+    },
+    combo:{
+      type: Boolean,
+      value: true
     },
     random:{
       type: Boolean,
@@ -27,10 +31,6 @@ Component({
     controlKeep: {
       type: Boolean,
       value: false
-    },
-    useSlot: {
-      type: Boolean,
-      value: false,
     },
     hoverStayTime: {
       type: Number,
@@ -43,10 +43,6 @@ Component({
     collapseSlot:{
       type: Boolean,
       value: false
-    },
-    btnLabel:{
-      type: String,
-      value: '确定',
     },
     scroll:{
       type: Boolean,
@@ -105,7 +101,7 @@ Component({
       type: Number,
       value: 0
     },
-    maxLength: {
+    maxlength: {
       type: Number,
       value: -1
     },
@@ -114,13 +110,37 @@ Component({
       value: 'text'
     },
   },
-
+  observers:{
+    "_cursor": function(_cursor) {
+      this.setData({
+        [`_eventTemp.blur`]: 1,
+      })
+    },
+    "_text": function(_text) {
+      if (this.focused) {
+        this.setData({
+          [`_eventTemp.tap`]: 1,
+        })
+      } else {
+        this._setText(this.data._cursor || this.data.value.length,this.data._text);
+      }
+    },
+    "_eventTemp.blur, _eventTemp.tap": function(blur,tap) {
+      if (blur === 1 && tap === 1) {
+        this._setText(this.data._cursor,this.data._text);
+      }
+      setTimeout(()=>{
+        this.data._eventTemp = {tap:0,blur:0};
+      },100);
+    }
+  },
   options: {
     pureDataPattern: /^_/,
     multipleSlots: true 
   },
   data: {
     stringArray: [],
+    _eventTemp: {tap:0,blur:0},
   },
 
   lifetimes: {
@@ -140,60 +160,54 @@ Component({
       } else {
         this.setData({ stringArray: array });
       }
+
+      this.focused = false;
     }
   },
 
   methods: {
     onInput(event) {
       const { value = '' } = event.detail || {};
-      this.setData({ value });
+      this.setData({ 
+        value,
+        showClear: this.ifShowClear(value),
+       });
       this.triggerEvent('input', value);
     },
 
     onFocus(event) {
+      this.focused = true;
+      this.blurFromClear = false;
       this.showControl();
       this.triggerEvent('focus',event.detail);
     },
 
     onBlur(event) {
       let { cursor } = event.detail;
-      this.data._cursor = cursor;
-
-      if (this._tapCallback) {
-        this._tapCallback(cursor);
-      } else {
-        this._blurCallback = res => {
-          this._setText(cursor,res);
-          this._blurCallback = null;
-        }
+      this.focused = false;
+      if (this.blurFromClear){
+        this.setData({
+          focus: true,
+          showClear:this.ifShowClear()
+        })
       }
-      this.triggerEvent('blur',event.detail);
+      this.setData({ _cursor: cursor });
+      this.triggerEvent('blur',cursor);
     },
 
     onConfirm(event) {
-      this.setData({
-        showControl: false,
-      })
+      this.hideControl();
       this.triggerEvent('confirm',event.detail);
     },
 
-    onKeyboardheightchange() {
+    onKeyboardheightchange(event) {
       this.triggerEvent('keyboardheightchange',event.detail);
     },
 
     onTap(event) {
       const { index } = event.currentTarget.dataset;
       let _text = this.data.stringArray[index];
-      this.data._text = _text;
-
-      if (this._blurCallback) {
-        this._blurCallback(_text);
-      } else {
-        this._tapCallback = res => {
-          this._setText(res,_text);
-          this._tapCallback = null;
-        }
-      }
+      this.setData({ _text: _text });
     },
 
     onCollapseTap() {
@@ -201,26 +215,38 @@ Component({
     },
 
     clear(){
+      this.blurFromClear = true;
       this.setData({
         value: '',
+        showClear:this.ifShowClear()
       })
     },
 
     _setText(cursor,text) {
       let value = this._insertString(this.data.value,cursor,text);
-      this.setData({ 
+      if (this.data.combo && text.length == 2){
+        cursor = this.data._cursor +  1;
+      } else {
+        cursor = this.data._cursor +  text.length;
+      }
+      this.setData({
         value,
-        cursor: this.data._cursor + text.length,
+        cursor,
         focus: true,
-        _cursor: null,
-        _text: null,
       });
+      this.triggerEvent('change',value);
     },
 
     hideControl(){
       this.setData({
         showControl: false,
+        showClear: this.ifShowClear()
       })
+    },
+
+    ifShowClear(value){
+      value = value === undefined ? this.data.value : value;
+      return (this.data.clearable && this.focused && value);
     },
 
     showControl(){
@@ -235,6 +261,7 @@ Component({
 
       this.setData({
         showControl: true,
+        showClear: this.ifShowClear()
       })
     },
 
@@ -245,7 +272,5 @@ Component({
         return str.slice(0,index) + insertStr + str.slice(index);
       }
     }
-
-
   }
 })
