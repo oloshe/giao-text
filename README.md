@@ -91,3 +91,5 @@ npm i giao-text
 |bind:confirm|点击完成按钮时触发|value = event.detail.value|
 |bind:keyboardheightchange|键盘高度发生变化的时候触发此事件|-|
 
+**注：部分输入法由于输入时不主动触发input事件，所以会导致不好的体验**
+

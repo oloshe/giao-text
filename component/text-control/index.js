@@ -112,7 +112,6 @@ Component({
   },
   observers:{
     "_cursor": function(_cursor) {
-      console.log('blur')
       this.setData({
         _blurEvent: 1,
       })
@@ -176,6 +175,7 @@ Component({
         showClear: this.ifShowClear(value),
        });
       this.triggerEvent('input', value);
+      this.triggerEvent('change', value);
     },
 
     onFocus(event) {
@@ -187,7 +187,9 @@ Component({
     onBlur(event) {
       let { cursor } = event.detail;
       this.focused = false;
-      this.setData({ _cursor: cursor });
+      this.setData({ 
+        _cursor: cursor,
+      });
       this.triggerEvent('blur',cursor);
     },
 
@@ -245,7 +247,8 @@ Component({
     },
 
     showControl(){
-      if (this.data.random){
+      let showControl = this.data.stringArray.length > 0;
+      if (showControl && this.data.random){
         this.data.stringArray.sort((a, b) => {
           return Math.random() > .5 ? -1 : 1;
         })
@@ -255,7 +258,7 @@ Component({
       }
 
       this.setData({
-        showControl: true,
+        showControl,
         showClear: this.ifShowClear()
       })
     },
