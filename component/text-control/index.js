@@ -261,7 +261,6 @@ Component({
     },
 
     _insertString(str,index,insertStr) {
-      console.log(str,index,insertStr)
       return str.slice(0,index) + insertStr + str.slice(index);
     }
   }
