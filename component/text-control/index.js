@@ -112,26 +112,28 @@ Component({
   },
   observers:{
     "_cursor": function(_cursor) {
+      console.log('blur')
       this.setData({
-        [`_eventTemp.blur`]: 1,
+        _blurEvent: 1,
       })
     },
-    "_text": function(_text) {
+    "_text": function (_text) {
       if (this.focused) {
         this.setData({
-          [`_eventTemp.tap`]: 1,
+          _tapEvent: 1,
         })
       } else {
         this._setText(this.data._cursor || this.data.value.length,this.data._text);
       }
     },
-    "_eventTemp.blur, _eventTemp.tap": function(blur,tap) {
+    "_blurEvent, _tapEvent": function(blur,tap) {
       if (blur === 1 && tap === 1) {
         this._setText(this.data._cursor,this.data._text);
       }
-      setTimeout(()=>{
-        this.data._eventTemp = {tap:0,blur:0};
-      },100);
+      setTimeout(() => {
+        this.data._tapEvent = 0;
+        this.data._blurEvent = 0;
+      },200);
     }
   },
   options: {
@@ -140,7 +142,8 @@ Component({
   },
   data: {
     stringArray: [],
-    _eventTemp: {tap:0,blur:0},
+    _tapEvent: 0,
+    _blurEvent: 0,
   },
 
   lifetimes: {
@@ -177,7 +180,6 @@ Component({
 
     onFocus(event) {
       this.focused = true;
-      this.blurFromClear = false;
       this.showControl();
       this.triggerEvent('focus',event.detail);
     },
@@ -185,12 +187,6 @@ Component({
     onBlur(event) {
       let { cursor } = event.detail;
       this.focused = false;
-      if (this.blurFromClear){
-        this.setData({
-          focus: true,
-          showClear:this.ifShowClear()
-        })
-      }
       this.setData({ _cursor: cursor });
       this.triggerEvent('blur',cursor);
     },
@@ -215,7 +211,6 @@ Component({
     },
 
     clear(){
-      this.blurFromClear = true;
       this.setData({
         value: '',
         showClear:this.ifShowClear()
