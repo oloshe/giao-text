@@ -123,7 +123,7 @@ Component({
           _tapEvent: 1,
         })
       } else {
-        this._setText(this.data._cursor || this.data.value.length,this.data._text);
+        this._setText(this.data._cursor,this.data._text);
       }
     },
     "_blurEvent, _tapEvent": function(blur,tap) {
@@ -213,7 +213,7 @@ Component({
     clear(){
       this.setData({
         value: '',
-        showClear:this.ifShowClear()
+        showClear: false,
       })
     },
 
@@ -235,7 +235,7 @@ Component({
     hideControl(){
       this.setData({
         showControl: false,
-        showClear: this.ifShowClear()
+        showClear: false,
       })
     },
 
@@ -261,11 +261,8 @@ Component({
     },
 
     _insertString(str,index,insertStr) {
-      if(index == 0) {
-        return insertStr.concat(str);
-      } else {
-        return str.slice(0,index) + insertStr + str.slice(index);
-      }
+      console.log(str,index,insertStr)
+      return str.slice(0,index) + insertStr + str.slice(index);
     }
   }
 })
