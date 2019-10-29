@@ -1,12 +1,22 @@
 # giao-text
 小程序文本输入组件,高度自定义，可拓展性。
 ## 代码片段示例
-[github @oloshe/giao-text](https://github.com/oloshe/giao-text)
+[https://github.com/oloshe/giao-text](https://github.com/oloshe/giao-text)
 # 快速开始
 ## 安装
 ```shell
-npm install giao-text
+npm i giao-text
 ```
+
+## 添加引用
+```json
+{
+  "usingComponents": {
+    "giao-text": "../../component/giao-text/index"
+  }
+}
+```
+
 ## 基础用法
 ![基础用法](https://github.com/oloshe/giao-text/blob/master/images/pic1.png)
 ```html
@@ -47,7 +57,6 @@ npm install giao-text
 # API
 
 ## Props
-
 |参数|说明|类型|默认值|
 |-|-|-|-|
 |string-set|字符集|String|-|
@@ -70,10 +79,9 @@ npm install giao-text
 |placeholder-class|指定 placeholder 的样式类|String|-|
 |disabled|是否禁用|Boolean|false|
 
-> 输入框部分参考 [微信官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/input.html)
+> 输入框 API 参考 [微信官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/input.html)
 
 ## Events
-
 |事件|说明|返回参数|
 |-|-|-|
 |bind:change|内容改变事件|value = event.detail|
