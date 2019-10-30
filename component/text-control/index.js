@@ -217,6 +217,7 @@ Component({
         value: '',
         showClear: false,
       })
+      this.triggerEvent('change','');
     },
 
     _setText(cursor,text) {
