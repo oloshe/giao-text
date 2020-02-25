@@ -1,7 +1,10 @@
 # giao-text
 小程序文本输入组件,高度自定义，可拓展性。
 ## 代码片段示例
-[https://github.com/oloshe/giao-text](https://github.com/oloshe/giao-text)
+导入代码片段 
+[https://developers.weixin.qq.com/s/Sjal5pm87mfC](https://developers.weixin.qq.com/s/Sjal5pm87mfC)
+
+github [https://github.com/oloshe/giao-text](https://github.com/oloshe/giao-text)
 # 快速开始
 ## 安装
 ```shell
@@ -18,18 +21,18 @@ npm i giao-text
 ```
 
 ## 基础用法
-![基础用法](https://github.com/oloshe/giao-text/blob/master/images/pic1.png)
+![基础用法](https://skrgiao.fun/public/picture/giao/1.png)
 ```html
 <text-control stringSet="1234567890." placeholder="请输入内容"/>
 ```
 ## 自定义字符集
-![自定义字符集](https://github.com/oloshe/giao-text/blob/master/images/pic2.png)
+![自定义字符集](https://skrgiao.fun/public/picture/giao/2.png)
 ```html
 <text-control stringSet="112,233,dds,566,#^@,dsd,<>?>,【】,55" separator="," placeholder="请输入内容"/>
 ```
 
 ## 自定义Slot
-![自定义Slot](https://github.com/oloshe/giao-text/blob/master/images/pic3.png)
+![自定义Slot](https://skrgiao.fun/public/picture/giao/3.png)
 ```html
 <text-control id="custom" stringSet="123456789" columns="3" placeholder="请输入内容">
   <view slot="right" class="btn">确定</view>
@@ -40,19 +43,12 @@ npm i giao-text
 ```
 
 ## 自定义按钮样式
-![自定义按钮样式](https://github.com/oloshe/giao-text/blob/master/images/pic4.png)
+![自定义按钮样式](https://skrgiao.fun/public/picture/giao/4.png)
 ```html
 <text-control stringSet="1234567890" columns="5" btn-class="custom-btn" hover-class="custom-hover" collapse-class="collapse" collapseSlot placeholder="请输入内容">
     <icon slot="collapse" type="download" size="25" />
 </text-control>
 ```
-
-## 滑动按钮
-![滑动按钮](https://github.com/oloshe/giao-text/blob/master/images/pic5.png)
-```html
-<text-control stringSet="1234567890" columns="5" scroll placeholder="请输入内容"/>
-```
-
 
 # API
 
@@ -69,7 +65,7 @@ npm i giao-text
 |password|是否是密码类型|Boolean|false|
 |maxlength|最大长度，设置为-1为不限|Number|-1|
 |random|按钮是否随机分配位置（在每次输入框获取焦点时）|Boolean|false|
-|control-keep|按钮面板是否保持显示|Boolean|false|
+|keep|按钮面板是否保持显示|Boolean|false|
 |collapse-label|收起按钮显示文本|String|'收起'|
 |collapse-slot|使用收起按钮slot时需设置此属性|Boolean|false|
 |scroll|是否为滚动显示（单行）|Boolean|false|

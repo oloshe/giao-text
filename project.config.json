@@ -10,10 +10,12 @@
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-		"coverView": true
+		"coverView": true,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.0",
+	"libVersion": "2.10.2",
 	"appid": "touristappid",
 	"projectname": "giao-text",
 	"debugOptions": {
