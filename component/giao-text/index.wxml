@@ -1,4 +1,4 @@
-<view class='text-ctrl root-class'>
+<view class='root-class root'>
   <view class="field">
     <slot name="left" />
     <input class="input" value="{{value}}" type="{{type}}" password="{{password}}" placeholder="{{placeholder}}"
@@ -9,7 +9,7 @@
       bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" bindconfirm="onConfirm"
       bindkeyboardheightchange="onKeyboardheightchange" />
     <icon wx:if="{{ showClear }}" class="clear" type="clear" bindtap="clear" size="18" />
-    <view wx:if="{{!controlKeep && showControl}}" class="collapse collapse-class" hover-class="hover hover-class"
+    <view wx:if="{{!keep && showControl}}" class="collapse collapse-class" hover-class="hover hover-class"
       hover-stay-time="{{hoverStayTime}}" bindtap="onCollapseTap">
       <slot wx:if="{{collapseSlot}}" name="collapse"/>
       <view wx:else class="mycollapse">{{collapseLabel}}</view>
@@ -17,10 +17,10 @@
     <slot name="right" />
   </view>
 
-  <scroll-view wx:if="{{controlKeep || showControl}}" class="control {{scroll ? 'scroll' : ''}}" scroll-x="{{scroll}}" enable-flex>
+  <scroll-view wx:if="{{keep || showControl}}" class="control {{scroll ? 'scroll' : ''}}" scroll-x="{{scroll}}" enable-flex bindtap="onScrollViewTap"> 
     <block wx:for="{{stringArray}}" wx:key="item">
       <view class="li btn-class {{scroll ? 'scroll' : ''}}" hover-class="hover hover-class" hover-stay-time="{{hoverStayTime}}"
-        style="width: {{100 / columns - 2}}%;margin:1%;" data-index="{{index}}" catchtap="onTap">
+        style="width: {{100 / columns - 2}}%;" data-index="{{index}}" catchtap="onTap">
         {{item}}
       </view>
     </block>
